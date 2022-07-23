@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import Head from "next/head";
 
 import Card from "../../components/Card";
 
@@ -39,17 +40,22 @@ function QuestionDetail() {
     }, [id])
 
     return (
-        <QuestionDetailContainer>
-            <h2>Question: {id}</h2>
-            {loading ? (<span>loading....</span>)
-                : (
-                    <Card
-                        title={question.title}
-                        views={question.view_count}
-                        answers={question.answers_count}
-                    />
-                )}
-        </QuestionDetailContainer>
+        <>
+            <Head>
+                <title>{question.title}</title>
+            </Head>
+            <QuestionDetailContainer>
+                <h2>Question: {id}</h2>
+                {loading ? (<span>loading....</span>)
+                    : (
+                        <Card
+                            title={question.title}
+                            views={question.view_count}
+                            answers={question.answers_count}
+                        />
+                    )}
+            </QuestionDetailContainer>
+        </>
     )
 }
 

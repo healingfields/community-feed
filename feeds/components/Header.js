@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Head from "next/head";
 
 const HeaderContainer = styled.div`
     background-color:orange;
@@ -18,9 +19,15 @@ const Title = styled.h1`
 
 function Header() {
     return (
-        <HeaderContainer>
-            <Title>Community feed</Title>
-        </HeaderContainer>
+        <>
+            <Head>
+                <title>Community feed</title>
+                <meta name="description" content="A community feed build with nextJs" />
+            </Head>
+            <HeaderContainer>
+                <Title>Community feed</Title>
+            </HeaderContainer>
+        </>
 
     )
 }

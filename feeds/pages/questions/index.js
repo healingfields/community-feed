@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import Head from "next/head";
 import Card from "../../components/Card";
 import Pagination from "../../components/Pagination";
 
@@ -13,20 +13,25 @@ margin:5%`;
 function Questions({ questions, hasMore, page }) {
 
     return (
-        <QuestionsContainer>
-            <h2>Questions</h2>
-            <div>
-                {questions.map((question) => (
-                    <Card
-                        key={question.question_id}
-                        title={question.title}
-                        views={question.view_count}
-                        answers={question.answer_count}
-                    />
-                ))}
-            </div>
-            <Pagination currentPage={parseInt(page) || 1} hasMore={hasMore} />
-        </QuestionsContainer>
+        <>
+            <Head>
+                <title>Questions</title>
+            </Head>
+            <QuestionsContainer>
+                <h2>Questions</h2>
+                <div>
+                    {questions.map((question) => (
+                        <Card
+                            key={question.question_id}
+                            title={question.title}
+                            views={question.view_count}
+                            answers={question.answer_count}
+                        />
+                    ))}
+                </div>
+                <Pagination currentPage={parseInt(page) || 1} hasMore={hasMore} />
+            </QuestionsContainer>
+        </>
     )
 
 }
